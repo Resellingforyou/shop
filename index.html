@@ -1,0 +1,446 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxe Drop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #020812;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,170,255,0.12), transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 22px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,170,255,0.15);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 2rem;
+      color: #00bfff;
+      letter-spacing: 4px;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #9db7d1;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00c8ff;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 40px;
+    }
+
+    .hero-tag {
+      border: 1px solid #00bfff;
+      color: #00bfff;
+      padding: 10px 40px;
+      border-radius: 50px;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(5rem, 13vw, 11rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      background: linear-gradient(to bottom, #ffffff, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(0,191,255,0.25);
+    }
+
+    .hero p {
+      margin-top: 30px;
+      color: #8aa4bd;
+      font-size: 1.1rem;
+    }
+
+    section {
+      padding: 80px 60px;
+    }
+
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.95;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+    }
+
+    .section-sub {
+      color: #00bfff;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #06111f;
+      border: 1px solid rgba(0,191,255,0.2);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: 0.35s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #00bfff;
+      box-shadow: 0 0 35px rgba(0,191,255,0.15);
+    }
+
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #00bfff;
+      color: black;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      z-index: 10;
+    }
+
+    .card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      background: white;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .brand {
+      color: #00bfff;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .product-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .price {
+      color: #00bfff;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .cart-btn {
+      background: linear-gradient(to right, #00aaff, #63e2ff);
+      border: none;
+      color: black;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: 0.3s;
+    }
+
+    .cart-btn:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0,191,255,0.15);
+      color: #6f8aa6;
+      margin-top: 60px;
+    }
+
+    @media(max-width: 768px) {
+      header {
+        padding: 20px;
+      }
+
+      nav {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 0.7rem;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+
+      .hero h1 {
+        font-size: 5rem;
+      }
+
+      .product-name {
+        font-size: 1.5rem;
+      }
+
+      .bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cart-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">LUXE DROP</div>
+
+    <nav>
+      <a href="#fragrance">FRAGRANCE</a>
+      <a href="#streetwear">STREETWEAR</a>
+      <a href="#jewelry">JEWELRY</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-tag">NEW ARRIVALS — LIMITED STOCK</div>
+
+    <h1>DRIP<br>DIFFERENT</h1>
+
+    <p>Elevate your look. Crafted to impress.</p>
+  </section>
+
+  <!-- FRAGRANCE SECTION -->
+  <section id="fragrance">
+    <div class="section-sub">FRAGRANCE</div>
+    <h2 class="section-title">Designer<br>Colognes</h2>
+
+    <div class="product-grid">
+
+      <div class="card">
+        <div class="badge">BEST SELLER</div>
+
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1200&auto=format&fit=crop" alt="Cologne">
+
+        <div class="card-content">
+          <div class="brand">LOUIS VUITTON</div>
+          <div class="product-name">Imagination</div>
+
+          <div class="bottom-row">
+            <div class="price">$320</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">LIMITED</div>
+
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1200&auto=format&fit=crop" alt="Cologne">
+
+        <div class="card-content">
+          <div class="brand">LOUIS VUITTON</div>
+          <div class="product-name">Pacific Chill</div>
+
+          <div class="bottom-row">
+            <div class="price">$320</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">LIMITED</div>
+
+        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=1200&auto=format&fit=crop" alt="Cologne">
+
+        <div class="card-content">
+          <div class="brand">LOUIS VUITTON</div>
+          <div class="product-name">City Of Stars</div>
+
+          <div class="bottom-row">
+            <div class="price">$320</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STREETWEAR SECTION -->
+  <section id="streetwear">
+    <div class="section-sub">STREETWEAR</div>
+    <h2 class="section-title">SP5DER<br>HOODIES</h2>
+
+    <div class="product-grid">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop" alt="Hoodie">
+
+        <div class="card-content">
+          <div class="brand">SP5DER</div>
+          <div class="product-name">Black SP5DER Hoodie</div>
+
+          <div class="bottom-row">
+            <div class="price">$180</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop" alt="Hoodie">
+
+        <div class="card-content">
+          <div class="brand">SP5DER</div>
+          <div class="product-name">Blue SP5DER Hoodie</div>
+
+          <div class="bottom-row">
+            <div class="price">$180</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">NEW</div>
+
+        <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=1200&auto=format&fit=crop" alt="Hoodie">
+
+        <div class="card-content">
+          <div class="brand">SP5DER</div>
+          <div class="product-name">Pink SP5DER Hoodie</div>
+
+          <div class="bottom-row">
+            <div class="price">$180</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JEWELRY SECTION -->
+  <section id="jewelry">
+    <div class="section-sub">JEWELRY</div>
+    <h2 class="section-title">Luxury<br>Accessories</h2>
+
+    <div class="product-grid">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1200&auto=format&fit=crop" alt="Chain">
+
+        <div class="card-content">
+          <div class="brand">CARTIER</div>
+          <div class="product-name">Diamond Chain</div>
+
+          <div class="bottom-row">
+            <div class="price">$550</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">LIMITED</div>
+
+        <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1200&auto=format&fit=crop" alt="Bracelet">
+
+        <div class="card-content">
+          <div class="brand">VAN CLEEF</div>
+          <div class="product-name">Luxury Bracelet</div>
+
+          <div class="bottom-row">
+            <div class="price">$430</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 LUXE DROP — ALL RIGHTS RESERVED
+  </footer>
+
+</body>
+</html>
+```
+
