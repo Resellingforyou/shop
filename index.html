@@ -614,57 +614,75 @@
 
   <script>
 
-    let cart = [];
-    let total = 0;
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let total = 0;
 
-    function addToCart(product, price){
+updateCart();
 
-      cart.push({product, price});
+function addToCart(product, price){
 
-      total += price;
+  cart.push({product, price});
 
-      document.getElementById("cart-count").innerText = cart.length;
+  saveCart();
 
-      document.getElementById("cart-total").innerText = total;
+  updateCart();
 
-      const cartItems = document.getElementById("cart-items");
+  openCart();
+}
 
-      const item = document.createElement("div");
+function saveCart(){
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
-      item.classList.add("cart-item");
+function updateCart(){
 
-      item.innerHTML = `
-        <h4>${product}</h4>
-        <p>$${price}</p>
-      `;
+  const cartItems = document.getElementById("cart-items");
 
-      cartItems.appendChild(item);
+  cartItems.innerHTML = "";
 
-      openCart();
-    }
+  total = 0;
 
-    function openCart(){
-      document.getElementById("cart-sidebar").classList.add("active");
-      document.getElementById("overlay").classList.add("active");
-    }
+  cart.forEach(item => {
 
-    function closeCart(){
-      document.getElementById("cart-sidebar").classList.remove("active");
-      document.getElementById("overlay").classList.remove("active");
-    }
+    total += item.price;
 
-    function checkout(){
+    const cartItem = document.createElement("div");
 
-      if(cart.length === 0){
-        alert("Your cart is empty.");
-        return;
-      }
+    cartItem.classList.add("cart-item");
 
-      alert("Payment system coming soon.");
+    cartItem.innerHTML = `
+      <h4>${item.product}</h4>
+      <p>$${item.price}</p>
+    `;
 
-    }
+    cartItems.appendChild(cartItem);
 
-  </script>
+  });
 
-</body>
-</html>
+  document.getElementById("cart-count").innerText = cart.length;
+
+  document.getElementById("cart-total").innerText = total;
+}
+
+function openCart(){
+  document.getElementById("cart-sidebar").classList.add("active");
+  document.getElementById("overlay").classList.add("active");
+}
+
+function closeCart(){
+  document.getElementById("cart-sidebar").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
+
+function checkout(){
+
+  if(cart.length === 0){
+    alert("Your cart is empty.");
+    return;
+  }
+
+  alert("Payment system coming soon.");
+
+}
+
+</script>
