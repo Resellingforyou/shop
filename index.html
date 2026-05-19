@@ -10,523 +10,480 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
-    body{
-      background:#020812;
-      color:white;
-      font-family:'Montserrat',sans-serif;
-      overflow-x:hidden;
+    body {
+      background: #020812;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
     }
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:radial-gradient(circle at center, rgba(0,170,255,0.12), transparent 60%);
-      pointer-events:none;
-      z-index:-1;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,170,255,0.12), transparent 60%);
+      pointer-events: none;
+      z-index: -1;
     }
 
-    header{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      padding:22px 60px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:rgba(0,0,0,0.35);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(0,170,255,0.15);
-      z-index:1000;
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 22px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,170,255,0.15);
+      z-index: 1000;
     }
 
-    .logo{
-      font-size:2rem;
-      color:#00bfff;
-      letter-spacing:4px;
-      font-weight:700;
+    .logo {
+      font-size: 2rem;
+      color: #00bfff;
+      letter-spacing: 4px;
+      font-weight: 700;
     }
 
-    nav{
-      display:flex;
-      gap:40px;
-      align-items:center;
+    nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
     }
 
-    nav a{
-      text-decoration:none;
-      color:#9db7d1;
-      font-size:0.85rem;
-      letter-spacing:3px;
-      transition:0.3s;
+    nav a {
+      text-decoration: none;
+      color: #9db7d1;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      transition: 0.3s;
     }
 
-    nav a:hover{
-      color:#00c8ff;
+    nav a:hover {
+      color: #00c8ff;
     }
 
-    .cart-icon-btn{
-      background:transparent;
-      border:1px solid #00bfff;
-      color:#00bfff;
-      padding:10px 18px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:700;
-      transition:0.3s;
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 40px;
     }
 
-    .cart-icon-btn:hover{
-      background:#00bfff;
-      color:black;
+    .hero-tag {
+      border: 1px solid #00bfff;
+      color: #00bfff;
+      padding: 10px 40px;
+      border-radius: 50px;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
     }
 
-    .hero{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:120px 20px 40px;
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(5rem, 13vw, 11rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      background: linear-gradient(to bottom, #ffffff, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(0,191,255,0.25);
     }
 
-    .hero-tag{
-      border:1px solid #00bfff;
-      color:#00bfff;
-      padding:10px 40px;
-      border-radius:50px;
-      letter-spacing:4px;
-      font-size:0.8rem;
-      margin-bottom:20px;
+    .hero p {
+      margin-top: 30px;
+      color: #8aa4bd;
+      font-size: 1.1rem;
     }
 
-    .hero h1{
-      font-family:'Anton',sans-serif;
-      font-size:clamp(5rem, 13vw, 11rem);
-      line-height:0.9;
-      text-transform:uppercase;
-      background:linear-gradient(to bottom, #ffffff, #00bfff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      text-shadow:0 0 40px rgba(0,191,255,0.25);
+    section {
+      padding: 80px 60px;
     }
 
-    .hero p{
-      margin-top:30px;
-      color:#8aa4bd;
-      font-size:1.1rem;
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.95;
+      margin-bottom: 50px;
+      text-transform: uppercase;
     }
 
-    section{
-      padding:80px 60px;
+    .section-sub {
+      color: #00bfff;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
     }
 
-    .section-title{
-      font-family:'Anton',sans-serif;
-      font-size:clamp(3rem, 8vw, 6rem);
-      line-height:0.95;
-      margin-bottom:50px;
-      text-transform:uppercase;
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
     }
 
-    .section-sub{
-      color:#00bfff;
-      letter-spacing:4px;
-      font-size:0.8rem;
-      margin-bottom:10px;
+    .card {
+      background: #06111f;
+      border: 1px solid rgba(0,191,255,0.2);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: 0.35s ease;
+      position: relative;
     }
 
-    .product-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-      gap:30px;
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #00bfff;
+      box-shadow: 0 0 35px rgba(0,191,255,0.15);
     }
 
-    .card{
-      background:#06111f;
-      border:1px solid rgba(0,191,255,0.2);
-      border-radius:22px;
-      overflow:hidden;
-      transition:0.35s ease;
-      position:relative;
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #00bfff;
+      color: black;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      z-index: 10;
     }
 
-    .card:hover{
-      transform:translateY(-8px);
-      border-color:#00bfff;
-      box-shadow:0 0 35px rgba(0,191,255,0.15);
+    .card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      background: white;
     }
 
-    .badge{
-      position:absolute;
-      top:15px;
-      left:15px;
-      background:#00bfff;
-      color:black;
-      font-weight:700;
-      padding:8px 16px;
-      border-radius:30px;
-      font-size:0.7rem;
-      letter-spacing:2px;
-      z-index:10;
+    .card-content {
+      padding: 24px;
     }
 
-    .card img{
-      width:100%;
-      height:380px;
-      object-fit:cover;
-      display:block;
-      background:white;
+    .brand {
+      color: #00bfff;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
     }
 
-    .card-content{
-      padding:24px;
+    .product-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 30px;
+      text-transform: uppercase;
     }
 
-    .brand{
-      color:#00bfff;
-      font-size:0.8rem;
-      letter-spacing:3px;
-      margin-bottom:10px;
+    .bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
     }
 
-    .product-name{
-      font-family:'Anton',sans-serif;
-      font-size:2rem;
-      line-height:1;
-      margin-bottom:30px;
-      text-transform:uppercase;
+    .price {
+      color: #00bfff;
+      font-size: 2rem;
+      font-weight: 700;
     }
 
-    .bottom-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:15px;
+    .cart-btn {
+      background: linear-gradient(to right, #00aaff, #63e2ff);
+      border: none;
+      color: black;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: 0.3s;
     }
 
-    .price{
-      color:#00bfff;
-      font-size:2rem;
-      font-weight:700;
+    .cart-btn:hover {
+      transform: scale(1.05);
     }
 
-    .cart-btn{
-      background:linear-gradient(to right, #00aaff, #63e2ff);
-      border:none;
-      color:black;
-      font-weight:700;
-      padding:14px 28px;
-      border-radius:12px;
-      cursor:pointer;
-      transition:0.3s;
+    /* ABOUT SECTION */
+    .about-section {
+      background: #06111f;
+      border-top: 1px solid rgba(0,191,255,0.15);
+      border-bottom: 1px solid rgba(0,191,255,0.15);
     }
 
-    .cart-btn:hover{
-      transform:scale(1.05);
+    .about-box {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0,0,0,0.3);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(0,191,255,0.15);
     }
 
-    .about-section{
-      background:#06111f;
-      border-top:1px solid rgba(0,191,255,0.15);
-      border-bottom:1px solid rgba(0,191,255,0.15);
+    .about-text {
+      color: #9db7d1;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-top: 20px;
     }
 
-    .about-box{
-      max-width:900px;
-      margin:auto;
-      background:rgba(0,0,0,0.3);
-      padding:40px;
-      border-radius:20px;
-      border:1px solid rgba(0,191,255,0.15);
+    footer {
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0,191,255,0.15);
+      color: #6f8aa6;
+      margin-top: 60px;
     }
 
-    .about-text{
-      color:#9db7d1;
-      font-size:1.05rem;
-      line-height:1.9;
-      margin-top:20px;
+    @media(max-width: 768px) {
+      header {
+        padding: 20px;
+      }
+
+      nav {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 0.7rem;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+
+      .hero h1 {
+        font-size: 5rem;
+      }
+
+      .product-name {
+        font-size: 1.5rem;
+      }
+
+      .bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cart-btn {
+        width: 100%;
+      }
     }
-
-    footer{
-      padding:40px;
-      text-align:center;
-      border-top:1px solid rgba(0,191,255,0.15);
-      color:#6f8aa6;
-      margin-top:60px;
-    }
-
-    /* CART */
-
-    .cart-sidebar{
-      position:fixed;
-      top:0;
-      right:-420px;
-      width:400px;
-      height:100%;
-      background:#06111f;
-      border-left:1px solid rgba(0,191,255,0.2);
-      z-index:3000;
-      transition:0.4s ease;
-      padding:30px;
-      display:flex;
-      flex-direction:column;
-    }
-
-    .cart-sidebar.active{
-      right:0;
-    }
-
-    .cart-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:30px;
-    }
-
-    .close-cart{
-      background:transparent;
-      border:none;
-      color:white;
-      font-size:1.5rem;
-      cursor:pointer;
-    }
-
-    .cart-item{
-      border-bottom:1px solid rgba(255,255,255,0.1);
-      padding:15px 0;
-    }
-
-    .cart-item p{
-      color:#00bfff;
-      margin-top:5px;
-    }
-
-    .cart-footer{
-      margin-top:auto;
-      padding-top:20px;
-    }
-
-    .checkout-btn{
-      width:100%;
-      padding:16px;
-      border:none;
-      border-radius:12px;
-      background:linear-gradient(to right, #00aaff, #63e2ff);
-      color:black;
-      font-weight:700;
-      cursor:pointer;
-      margin-top:15px;
-    }
-
-    .overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.6);
-      opacity:0;
-      pointer-events:none;
-      transition:0.3s;
-      z-index:2000;
-    }
-
-    .overlay.active{
-      opacity:1;
-      pointer-events:all;
-    }
-
   </style>
 </head>
 <body>
 
-<header>
-
-  <div style="display:flex; align-items:center; gap:20px;">
-
+  <header>
     <div class="logo">LUXE DROP</div>
 
-    <button class="cart-icon-btn" onclick="openCart()">
-      🛒 CART (<span id="cart-count">0</span>)
-    </button>
+    <nav>
+      <a href="#fragrance">FRAGRANCE</a>
+      <a href="#streetwear">STREETWEAR</a>
+      <a href="#jewelry">JEWELRY</a>
+      <a href="#about">ABOUT</a>
+    </nav>
+  </header>
 
-  </div>
+  <section class="hero">
+    <div class="hero-tag">NEW ARRIVALS — LIMITED STOCK</div>
 
-  <nav>
-    <a href="#fragrance">FRAGRANCE</a>
-    <a href="#streetwear">STREETWEAR</a>
-    <a href="#jewelry">JEWELRY</a>
-    <a href="#about">ABOUT</a>
-  </nav>
+    <h1>DRIP<br>DIFFERENT</h1>
 
-</header>
+    <p>Elevate your look. Crafted to impress.</p>
+  </section>
 
-<section class="hero">
-  <div class="hero-tag">NEW ARRIVALS — LIMITED STOCK</div>
+  <!-- FRAGRANCE SECTION -->
+  <section id="fragrance">
+    <div class="section-sub">FRAGRANCE</div>
+    <h2 class="section-title">Designer<br>Colognes</h2>
 
-  <h1>DRIP<br>DIFFERENT</h1>
+    <div class="product-grid">
 
-  <p>Elevate your look. Crafted to impress.</p>
-</section>
+      <div class="card">
+        <div class="badge">BEST SELLER</div>
 
-<!-- FRAGRANCE -->
-<section id="fragrance">
+        <img src="Louis-Vuitton-Imagination.webp">
 
-  <div class="section-sub">FRAGRANCE</div>
-  <h2 class="section-title">Designer<br>Colognes</h2>
+        <div class="card-content">
+          <div class="brand">LOUIS VUITTON</div>
+          <div class="product-name">Imagination</div>
 
-  <div class="product-grid">
-
-    <div class="card">
-      <div class="badge">BEST SELLER</div>
-
-      <img src="Louis-Vuitton-Imagination.webp">
-
-      <div class="card-content">
-        <div class="brand">LOUIS VUITTON</div>
-        <div class="product-name">Imagination</div>
-
-        <div class="bottom-row">
-          <div class="price">$320</div>
-
-          <button class="cart-btn" onclick="addToCart('Imagination', 320)">
-            ADD TO CART
-          </button>
+          <div class="bottom-row">
+            <div class="price">$320</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="badge">LIMITED</div>
+      <div class="card">
+        <div class="badge">LIMITED</div>
 
-      <img src="pacific-chill-pr-visual-3-64664e23ac8b5 (1).avif">
+        <img src="pacific-chill-pr-visual-3-64664e23ac8b5 (1).avif">
 
-      <div class="card-content">
-        <div class="brand">LOUIS VUITTON</div>
-        <div class="product-name">Pacific Chill</div>
+        <div class="card-content">
+          <div class="brand">LOUIS VUITTON</div>
+          <div class="product-name">Pacific Chill</div>
 
-        <div class="bottom-row">
-          <div class="price">$320</div>
-
-          <button class="cart-btn" onclick="addToCart('Pacific Chill', 320)">
-            ADD TO CART
-          </button>
+          <div class="bottom-row">
+            <div class="price">$320</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
         </div>
       </div>
+
+      <div class="card">
+        <div class="badge">LIMITED</div>
+
+        <img src="CITY-OF-STARS_01.jpg">
+
+        <div class="card-content">
+          <div class="brand">LOUIS VUITTON</div>
+          <div class="product-name">City Of Stars</div>
+
+          <div class="bottom-row">
+            <div class="price">$320</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- STREETWEAR SECTION -->
+  <section id="streetwear">
+    <div class="section-sub">STREETWEAR</div>
+    <h2 class="section-title">SP5DER<br>HOODIES</h2>
 
-<!-- ABOUT -->
-<section id="about" class="about-section">
+    <div class="product-grid">
 
-  <div class="section-sub">ABOUT US</div>
-  <h2 class="section-title">Who<br>We Are</h2>
+      <div class="card">
+        <img src="857581_01.jpg.webp">
 
-  <div class="about-box">
+        <div class="card-content">
+          <div class="brand">SP5DER</div>
+          <div class="product-name">Black SP5DER Hoodie</div>
 
-    <div class="about-text">
-      Welcome to Luxe Drop — your destination for luxury fashion,
-      designer fragrances, premium streetwear, and exclusive jewelry.
-      Edit this section anytime with your own info.
+          <div class="bottom-row">
+            <div class="price">$180</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="download (6).jpg">
+
+        <div class="card-content">
+          <div class="brand">SP5DER</div>
+          <div class="product-name">Blue SP5DER Hoodie</div>
+
+          <div class="bottom-row">
+            <div class="price">$180</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">NEW</div>
+
+        <img src="DSC_7872.webp">
+
+        <div class="card-content">
+          <div class="brand">SP5DER</div>
+          <div class="product-name">Pink SP5DER Hoodie</div>
+
+          <div class="bottom-row">
+            <div class="price">$180</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-  </div>
+  <!-- JEWELRY SECTION -->
+  <section id="jewelry">
+    <div class="section-sub">JEWELRY</div>
+    <h2 class="section-title">Luxury<br>Accessories</h2>
 
-</section>
+    <div class="product-grid">
 
-<footer>
-  © 2026 LUXE DROP — ALL RIGHTS RESERVED
-</footer>
+      <div class="card">
+        <img src="Screenshot 2026-05-18 204802.png">
 
-<!-- CART SIDEBAR -->
+        <div class="card-content">
+          <div class="brand"></div>
+          <div class="product-name">Diamond Cuban Link Bracelet</div>
 
-<div class="cart-sidebar" id="cart-sidebar">
+          <div class="bottom-row">
+            <div class="price">$850</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
 
-  <div class="cart-top">
-    <h2>Your Cart</h2>
+      <div class="card">
+        <div class="badge">LIMITED</div>
 
-    <button class="close-cart" onclick="closeCart()">✕</button>
-  </div>
+        <img src="Screenshot 2026-05-18 213356.png">
 
-  <div id="cart-items"></div>
+        <div class="card-content">
+          <div class="brand"></div>
+          <div class="product-name">Diamond Cross Necklace</div>
 
-  <div class="cart-footer">
+          <div class="bottom-row">
+            <div class="price">$895</div>
+            <button class="cart-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
 
-    <h3>Total: $<span id="cart-total">0</span></h3>
+    </div>
+  </section>
 
-    <button class="checkout-btn" onclick="checkout()">
-      PAY NOW
-    </button>
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about-section">
+    <div class="section-sub">ABOUT US</div>
+    <h2 class="section-title">Who<br>We Are</h2>
 
-  </div>
+    <div class="about-box">
 
-</div>
+      <!-- CHANGE THIS TEXT -->
+      <div class="about-text">
+        Welcome to Luxe Drop — your destination for luxury fashion,
+        designer fragrances, premium streetwear, and exclusive jewelry.
+        We focus on bringing high-quality products with elite styling
+        and limited stock collections. Add your own business information
+        here anytime you want.
+      </div>
 
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
+    </div>
+  </section>
 
-<script>
-
-let cart = [];
-let total = 0;
-
-function addToCart(product, price){
-
-  cart.push({product, price});
-
-  total += price;
-
-  document.getElementById("cart-count").innerText = cart.length;
-
-  document.getElementById("cart-total").innerText = total;
-
-  const cartItems = document.getElementById("cart-items");
-
-  const item = document.createElement("div");
-
-  item.classList.add("cart-item");
-
-  item.innerHTML = `
-    <h4>${product}</h4>
-    <p>$${price}</p>
-  `;
-
-  cartItems.appendChild(item);
-
-  openCart();
-}
-
-function openCart(){
-  document.getElementById("cart-sidebar").classList.add("active");
-  document.getElementById("overlay").classList.add("active");
-}
-
-function closeCart(){
-  document.getElementById("cart-sidebar").classList.remove("active");
-  document.getElementById("overlay").classList.remove("active");
-}
-
-function checkout(){
-
-  if(cart.length === 0){
-    alert("Your cart is empty.");
-    return;
-  }
-
-  alert("Payment system coming soon.");
-
-}
-
-</script>
+  <footer>
+    © 2026 LUXE DROP — ALL RIGHTS RESERVED
+  </footer>
 
 </body>
 </html>
+
+
