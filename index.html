@@ -630,6 +630,15 @@ function addToCart(product, price){
   openCart();
 }
 
+function removeFromCart(index){
+
+  cart.splice(index, 1);
+
+  saveCart();
+
+  updateCart();
+}
+
 function saveCart(){
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -642,7 +651,7 @@ function updateCart(){
 
   total = 0;
 
-  cart.forEach(item => {
+  cart.forEach((item, index) => {
 
     total += item.price;
 
@@ -651,8 +660,29 @@ function updateCart(){
     cartItem.classList.add("cart-item");
 
     cartItem.innerHTML = `
-      <h4>${item.product}</h4>
-      <p>$${item.price}</p>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+
+        <div>
+          <h4>${item.product}</h4>
+          <p>$${item.price}</p>
+        </div>
+
+        <button 
+          onclick="removeFromCart(${index})"
+          style="
+            background:red;
+            border:none;
+            color:white;
+            width:32px;
+            height:32px;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:bold;
+          ">
+          ✕
+        </button>
+
+      </div>
     `;
 
     cartItems.appendChild(cartItem);
@@ -681,8 +711,15 @@ function checkout(){
     return;
   }
 
-  alert("Payment system coming soon.");
+  alert("Payment successful!");
 
+  cart = [];
+
+  saveCart();
+
+  updateCart();
+
+  closeCart();
 }
 
 </script>
