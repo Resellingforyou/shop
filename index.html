@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +58,7 @@
     nav {
       display: flex;
       gap: 40px;
+      align-items: center;
     }
 
     nav a {
@@ -220,6 +220,29 @@
       transform: scale(1.05);
     }
 
+    /* ABOUT SECTION */
+    .about-section {
+      background: #06111f;
+      border-top: 1px solid rgba(0,191,255,0.15);
+      border-bottom: 1px solid rgba(0,191,255,0.15);
+    }
+
+    .about-box {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0,0,0,0.3);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(0,191,255,0.15);
+    }
+
+    .about-text {
+      color: #9db7d1;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-top: 20px;
+    }
+
     footer {
       padding: 40px;
       text-align: center;
@@ -273,6 +296,7 @@
       <a href="#fragrance">FRAGRANCE</a>
       <a href="#streetwear">STREETWEAR</a>
       <a href="#jewelry">JEWELRY</a>
+      <a href="#about">ABOUT</a>
     </nav>
   </header>
 
@@ -436,11 +460,28 @@
     </div>
   </section>
 
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about-section">
+    <div class="section-sub">ABOUT US</div>
+    <h2 class="section-title">Who<br>We Are</h2>
+
+    <div class="about-box">
+
+      <!-- CHANGE THIS TEXT -->
+      <div class="about-text">
+        Welcome to Luxe Drop — your destination for luxury fashion,
+        designer fragrances, premium streetwear, and exclusive jewelry.
+        We focus on bringing high-quality products with elite styling
+        and limited stock collections. Add your own business information
+        here anytime you want.
+      </div>
+
+    </div>
+  </section>
+
   <footer>
     © 2026 LUXE DROP — ALL RIGHTS RESERVED
   </footer>
 
 </body>
 </html>
-```
-
